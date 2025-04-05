@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import {Link, NavLink} from 'react-router-dom'
 import { useState } from 'react';
+import { ShopContext } from '../context/ShopContext';
 
 
 const Nav = () => {
 const [visible,setVisible] = useState(false);
-
+const {setShowSearch, getCartCount} = useContext(ShopContext);
   return (
     <div className='flex item-center justify-between py-4 font-medium'>
-        <img src={assets.logo} className='w-36'  alt=""/>
+       <Link to='/'> <img src={assets.logo} className='w-36'  alt=""/> </Link>
 
 
         <ul className='hidden sm:flex gap-5 text-sm text'>
@@ -33,7 +34,7 @@ const [visible,setVisible] = useState(false);
         </ul>
 
         <div className='flex items-center gap-6'>
-            <img src={assets.search_icon} className='w-5 h-5 cursor-pointer' alt="" />
+            <img onClick={()=> setShowSearch(true)} src={assets.search_icon} className='w-5 h-5 cursor-pointer' alt="" />
 
             <div className='group relative'>
                 <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="" />
@@ -47,7 +48,7 @@ const [visible,setVisible] = useState(false);
             </div>
             <Link to='/cart' className='relative'>
                 <img src={assets.cart_icon} className='w-5 min-w-5' alt="" />
-                <p className='absolute right-[-5px] w-4  text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>10</p>
+                <p className='absolute right-[-5px] w-4  text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
             </Link>
 
 

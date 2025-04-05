@@ -12,12 +12,18 @@ import Login from './pages/Login';
 import PlaceOrder from './pages/PlaceOrder';
 import Orders from './pages/Orders';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
+import SearchBar from './components/SeachBar';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const App = () => {
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       {/* Place navbar outside of the Routes to make it available on all pages */}
+      <ToastContainer />
       <Nav/>
+      <SearchBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
@@ -29,6 +35,7 @@ const App = () => {
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
